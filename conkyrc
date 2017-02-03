@@ -128,29 +128,29 @@ CPU TEMP: ${alignr 10}${execp sensors -f coretemp-isa-0000 | grep 'Core 0' | cut
 CPU FAN: ${alignr 10}${execi 15 sensors -f | grep "Processor Fan" | cut -c 16-23}
 
 ${font PF Tempesta Five Condensed:pixelsize=10}TOTAL: ${cpu cpu0}%
-${goto 38} ${color 00C081}${cpubar 5,200 cpu0}${color c1c1c1}
+${goto 38} ${color 02A49C}${cpubar 5,200 cpu0}${color c1c1c1}
 ${goto 38}${cpugraph cpu0 15,200 00C081 02D35F -t}${color c1c1c1}
 
 CORE 1: ${freq cpu1}MHz 
-${font SFNS Regular:pixelsize=14}${cpu cpu1}%${goto 35} ${color 00C081}${cpubar 5,200 cpu1}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
+${font SFNS Regular:pixelsize=14}${cpu cpu1}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu1}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 ${goto 38}${cpugraph cpu1 15,200 00C081 02D35F -t}${color c1c1c1}
 
 CORE 2: ${freq cpu2}MHz
-${font SFNS Regular:pixelsize=14}${cpu cpu2}%${goto 35} ${color 00C081}${cpubar 5,200 cpu2}${color c1c1c1}${font SFNS Regular:pixelsize=10}
+${font SFNS Regular:pixelsize=14}${cpu cpu2}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu2}${color c1c1c1}${font SFNS Regular:pixelsize=10}
 ${goto 38}${cpugraph cpu2 15,200 00C081 02D35F -t}
 
 CORE 3: ${freq cpu3}MHz
-${font SFNS Regular:pixelsize=14}${cpu cpu3}%${goto 35} ${color 00C081}${cpubar 5,200 cpu3}${color c1c1c1}${font SFNS Regular:pixelsize=10}
+${font SFNS Regular:pixelsize=14}${cpu cpu3}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu3}${color c1c1c1}${font SFNS Regular:pixelsize=10}
 ${goto 38}${cpugraph cpu3 15,200 00C081 02D35F -t}
 
 CORE 4: ${freq cpu4}MHz
-${font SFNS Regular:pixelsize=14}${cpu cpu4}%${goto 35} ${color 00C081}${cpubar 5,200 cpu4}${color c1c1c1}${font SFNS Regular:pixelsize=10}
+${font SFNS Regular:pixelsize=14}${cpu cpu4}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu4}${color c1c1c1}${font SFNS Regular:pixelsize=10}
 ${goto 38} ${cpugraph cpu4 15,200 00C081 02D35F -t}
 
 ${color 02A49C}${font SFNS Regular:pixelsize=14}MEMORY & USAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
 RANDOM ACCESS MEMORY: ${mem}/${memmax}
-${font SFNS Regular:pixelsize=14}${memperc}%${font SFNS Regular:pixelsize=10}${goto 38} ${color 00C081}${membar 5,200}${color c1c1c1}
+${font SFNS Regular:pixelsize=14}${memperc}%${font SFNS Regular:pixelsize=10}${goto 38} ${color 02A49C}${membar 5,200}${color c1c1c1}
 ${goto 38}${memgraph 5,200 00C081 02D35F -t}
 
 #${font SFNS Regular:pixelsize=14}${top_mem name 1}${alignr 10}${top_mem mem 1}%
@@ -171,32 +171,32 @@ ${goto 10}read:${goto 38}${diskiograph_read sdb 15,200 00C081 02D35F -t}
 ${goto 10}write:${goto 38}${diskiograph_write sdb 15,200 00C081 02D35F -t}
 
 /ROOT:  ${fs_used /}/${fs_size /}
-${font SFNS Regular:pixelsize=14}${fs_used_perc /}%${color 00C081}${goto 38}${fs_bar 5,200 /}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+${font SFNS Regular:pixelsize=14}${fs_used_perc /}%${color 02A49C}${goto 38}${fs_bar 5,200 /}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
 
 #/HOME: ${fs_used /home}/${fs_free /home}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /home}%${color 00C081}   ${goto 25}${fs_bar 5,200 /home}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /home}%${color 02A49C}   ${goto 25}${fs_bar 5,200 /home}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
 
 #/MUSIC: ${fs_used /run/media/dobbie/Music}/${fs_free /run/media/dobbie/Music}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /run/media/dobbie/Music}% ${goto 25}${color 00C081}${fs_bar 5,200}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /run/media/dobbie/Music}% ${goto 25}${color 02A49C}${fs_bar 5,200}
 
 #${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}/MOVIES: ${fs_used /mnt/Movies}/${fs_free /mnt/Movies}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/Movies}%${color 00C081} ${goto 25}${fs_bar 5,200 /mnt/Movies}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/Movies}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/Movies}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
 
 #/BACKUP: ${fs_used /mnt/Important}/${fs_free /mnt/Important}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/Important}%${color 00C081} ${goto 25}${fs_bar 5,200 /mnt/Important}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/Important}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/Important}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
 
 #/BACKUP1: ${fs_used /mnt/77F3EE190BD86789}/${fs_free /mnt/77F3EE190BD86789}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/77F3EE190BD86789}%${color 00C081} ${goto 25}${fs_bar 5,200 /mnt/77F3EE190BD86789}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/77F3EE190BD86789}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/77F3EE190BD86789}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
 
 #/BACKUP2: ${fs_used /mnt/wwn-0x5000c50015d9bbbc-part1}/${fs_free /mnt/wwn-0x5000c50015d9bbbc-part1}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/wwn-0x5000c50015d9bbbc-part1}%${color 00C081} ${goto 25}${fs_bar 5,200 /mnt/wwn-0x5000c50015d9bbbc-part1}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/wwn-0x5000c50015d9bbbc-part1}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/wwn-0x5000c50015d9bbbc-part1}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
 
 #${color c1c1c1}${font Poky:pixelsize=12}l ${color 02A49C}${font SFNS Regular:pixelsize=14}NOW PLAYING - AUDACIOUS ${color 1c1c1c}${stippled_hr 2}${hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
 #${color c1c1c1}SONG:  ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data title}
 #${color c1c1c1}ALBUM: ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data album}
 #${color c1c1c1}ARTIST: ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data artist}
-#${exec audtool --current-song-bitrate-kbps} kbps | ${exec audtool --current-song-length}  ${color 00C081}${execbar expr 100 \* $(audtool --current-song-output-length-seconds) \/ $(audtool --current-song-length-seconds)}$endif
+#${exec audtool --current-song-bitrate-kbps} kbps | ${exec audtool --current-song-length}  ${color 02A49C}${execbar expr 100 \* $(audtool --current-song-output-length-seconds) \/ $(audtool --current-song-length-seconds)}$endif
 #${color c1c1c1}PLAYLIST: ${if_running audacious}${exec audtool --current-playlist}
 
 
