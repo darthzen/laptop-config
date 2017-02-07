@@ -43,48 +43,15 @@ conky.config = {
 	};
 
 conky.text = [[
-#${lua conky_draw_bg}
-#${color 02A49C}${font conkysymbols:size=50}${alignc 45}t
-#${voffset -90}${color c1c1c1}${font SFNS Regular:pixelsize=18}${offset -45}${alignc}ARCH LINUX
-#${voffset 5}
-#${color 02A49C}${font SFNS Regular:pixelsize=14}KERNEL VERSION ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
-#
-#${color c1c1c1}${font SFNS Regular:pixelsize=14}${kernel}
-#
-#${color 02A49C}${font SFNS Regular:pixelsize=14}TIME & DATE${color 1c1c1c}${stippled_hr 2}${color c1c1c1}
-#
-#${color c1c1c1}${font SFNS Regular:pixelsize=14}${time %A}
-#${color 02A49C}${font SFNS Regular:pixelsize=15}${time %I:%M %P }${color c1c1c1}${font SFNS Regular:pixelsize=10}
-#${font SFNS Regular:pixelsize=10}${time %B %d}, ${time %G}
-#
 ${color 02A49C}${font SFNS Regular:pixelsize=14}SYSTEM DETAILS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
-#DISTRO: ${alignr 10}openSUSE Tumbleweed
-#
-#HOST: ${alignr 10}${nodename}
-#
-#KERNEL: ${alignr 10}${kernel}
-#
 UPTIME: ${alignr 10}${uptime}
 
-#PROCESSES: ${alignr 10}${running_processes}
-#
-#ARCHITECTURE: ${alignr 10}${machine}
-#
 PROCESSOR: ${alignr 10}${execi 100 lscpu | grep -i "model name" | cut -c 20-}
 
 LOAD AVG: ${alignr 10}${loadavg}
 
-#GPU TEMP: ${alignr 10}${execi 15 sensors -f | head -n 10 | grep -i "temp1" | cut -c 15-22}
-#
-#GPU FAN: ${alignr 10}${execi 15 sensors -f | grep "Video Fan" | cut -c 16-23}
-#
 MB TEMP: ${alignr 10}${execi 15 sensors -f | tail -n 15 | grep -i "temp1" | cut -c 15-22}
-#
-#
-#${color c1c1c1}${font Poky:pixelsize=12}i ${color 02A49C}${font SFNS Regular:pixelsize=14}SYSTEM UPDATES ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
-#
-#UPDATES PENDING: ${goto 90}${color 02A49C}${color1}${execpi 3600 checkupdates | wc -l}
 
 ${if_up enp10s0u1}
 ${color 02A49C}${font SFNS Regular:pixelsize=14}WIRED NETWORK ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
@@ -153,12 +120,6 @@ RANDOM ACCESS MEMORY: ${mem}/${memmax}
 ${font SFNS Regular:pixelsize=14}${memperc}%${font SFNS Regular:pixelsize=10}${goto 38} ${color 02A49C}${membar 5,200}${color c1c1c1}
 ${goto 38}${memgraph 5,200 00C081 02D35F -t}
 
-#${font SFNS Regular:pixelsize=14}${top_mem name 1}${alignr 10}${top_mem mem 1}%
-#${font SFNS Regular:pixelsize=14}${top_mem name 2}${alignr 10}${top_mem mem 2}%
-#${font SFNS Regular:pixelsize=14}${top_mem name 3}${alignr 10}${top_mem mem 3}%
-#${font SFNS Regular:pixelsize=14}${top_mem name 4}${alignr 10}${top_mem mem 4}%
-#${font SFNS Regular:pixelsize=14}${top_mem name 4}${alignr 10}${top_mem mem 5}%
-#
 ${color 02A49C}${font SFNS Regular:pixelsize=14}STORAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
 DISK I/O:
@@ -172,35 +133,5 @@ ${goto 10}write:${goto 38}${diskiograph_write sdb 15,200 00C081 02D35F -t}
 
 /ROOT:  ${fs_used /}/${fs_size /}
 ${font SFNS Regular:pixelsize=14}${fs_used_perc /}%${color 02A49C}${goto 38}${fs_bar 5,200 /}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
-#/HOME: ${fs_used /home}/${fs_free /home}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /home}%${color 02A49C}   ${goto 25}${fs_bar 5,200 /home}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
-#/MUSIC: ${fs_used /run/media/dobbie/Music}/${fs_free /run/media/dobbie/Music}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /run/media/dobbie/Music}% ${goto 25}${color 02A49C}${fs_bar 5,200}
-
-#${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}/MOVIES: ${fs_used /mnt/Movies}/${fs_free /mnt/Movies}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/Movies}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/Movies}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
-#/BACKUP: ${fs_used /mnt/Important}/${fs_free /mnt/Important}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/Important}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/Important}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
-#/BACKUP1: ${fs_used /mnt/77F3EE190BD86789}/${fs_free /mnt/77F3EE190BD86789}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/77F3EE190BD86789}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/77F3EE190BD86789}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
-#/BACKUP2: ${fs_used /mnt/wwn-0x5000c50015d9bbbc-part1}/${fs_free /mnt/wwn-0x5000c50015d9bbbc-part1}
-#${font SFNS Regular:pixelsize=14}${fs_used_perc /mnt/wwn-0x5000c50015d9bbbc-part1}%${color 02A49C} ${goto 25}${fs_bar 5,200 /mnt/wwn-0x5000c50015d9bbbc-part1}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
-#${color c1c1c1}${font Poky:pixelsize=12}l ${color 02A49C}${font SFNS Regular:pixelsize=14}NOW PLAYING - AUDACIOUS ${color 1c1c1c}${stippled_hr 2}${hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
-
-#${color c1c1c1}SONG:  ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data title}
-#${color c1c1c1}ALBUM: ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data album}
-#${color c1c1c1}ARTIST: ${goto 50}${if_running audacious}${exec audtool --current-song-tuple-data artist}
-#${exec audtool --current-song-bitrate-kbps} kbps | ${exec audtool --current-song-length}  ${color 02A49C}${execbar expr 100 \* $(audtool --current-song-output-length-seconds) \/ $(audtool --current-song-length-seconds)}$endif
-#${color c1c1c1}PLAYLIST: ${if_running audacious}${exec audtool --current-playlist}
-
-
-
-
 
 ]];
