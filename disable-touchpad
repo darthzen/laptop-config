@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DEVICE='DLL06E5:01 06CB:7A13 Touchpad'
+ID=`xinput list --id-only "${DEVICE}"`
+STATE=`xinput list-props 12 | grep "Device Enabled" | cut -d ":" -f 2 | grep -o [0-1]`
+
+if [[ ${STATE} == 1 ]] ; then
+    xinput disable ${ID}
+else
+    xinput enable ${ID}
+fi
