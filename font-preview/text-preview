@@ -1,0 +1,80 @@
+#!/bin/bash
+rm -f preview*.html preview.css
+
+COUNT=0
+
+TEXT="The quick brown fox jumps over the lazy dog"
+
+cat << EOF > preview.html
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="preview.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" data-semver="2.2.0" data-require="jquery@*"></script>
+        <script data-require="masonry@*" data-semver="2.1.0-7" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.07/jquery.masonry.min.js"></script>
+        <script src="jquery.infinitescroll.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="grid">
+EOF
+
+for FONT in `find /usr/share/fonts/ -name "*.ttf"` ; do
+    FONTFAMILY=`./font-name-extract -n ${FONT} -f`
+    FONTSTYLE=`./font-name-extract -n ${FONT} -s`
+    STYLENAME=`echo ${FONTFAMILY}_${FONTSTYLE} | sed "s/[\"\/\' ]/_/g"`
+    cat << EOF >> preview.css
+.${STYLENAME} {
+    font-family: "${FONTFAMILY}";
+    font-style: "${FONTSTYLE}";
+    font-size: 3.0em;
+    
+}
+EOF
+    PERPAGE=200
+    COUNT=$((COUNT + 1))
+    PAGENUM=$((COUNT/PERPAGE))
+    if [[ $PAGENUM == 0 ]]; then
+        PAGENUM=""
+    fi
+
+    if [ $((COUNT % PERPAGE)) == 0 ] ; then
+        cat << EOF > preview${PAGENUM}.html
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="preview.css"/>
+    </head>
+    <body>
+        <div class="grid">
+EOF
+    fi
+    EXTRACLASS=""
+    if [ $((COUNT % PERPAGE)) == 1 ] ; then 
+        EXTRACLASS=' grid-item-2'
+    fi
+    echo "          <div class=\"grid-item${EXTRACLASS}\">${FONTFAMILY} - ${FONTSTYLE}<p class=\"${STYLENAME}\">${TEXT}</p></div>" >> preview${PAGENUM}.html 
+    if [[ $((COUNT % PERPAGE)) == $((PERPAGE - 1)) && ! -z $PAGENUM ]] ; then
+        cat << EOF >> preview${PAGENUM}.html
+        </div>
+        <nav id="pagination">
+            <p><a href="preview$((PAGENUM + 1)).html">Page $((PAGENUM + 1))</a></p>
+        </nav>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" data-semver="2.2.0" data-require="jquery@*"></script>
+        <script data-require="masonry@*" data-semver="2.1.0-7" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.07/jquery.masonry.min.js"></script>
+        <script src="jquery.infinitescroll.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
+EOF
+    fi
+done
+
+cat << EOF >> preview.html
+        </div>
+        <nav id="pagination">
+            <p><a href="preview2.html">Page 2</a></p>
+        </nav>
+        <script src="script.js"/>
+    </body>
+</html>
+EOF

@@ -1,0 +1,52 @@
+#!/usr/bin/python
+#
+# Get font family and style from .ttf files
+# Paul Philippov, paul@ppds.ws, 2008-10-05
+#
+
+import sys,getopt
+import os.path
+from PIL import ImageFont
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:],"n:fs",["name=","family","style"])
+except getopt.GetoptError:
+    print 'Usage: font-name-extract -n <font name> [-f  -s]'
+    sys.exit(2)
+
+filename = ""
+output = ""
+for opt, arg in opts:
+    if opt == "-n":
+        filename = arg
+    if opt == "-f":
+        if output == "":
+            output = "family"
+        else:
+            print "Cannot output both family and style"
+            sys.exit(2)
+    if opt == "-s":
+        if output == "":
+            output = "style"
+        else:
+            print "Cannot output both family and style"
+            sys.exit(2)
+        
+if filename == "":
+    print "Filename required"
+    sys.exit(2)
+
+if not os.path.exists(filename) or not os.path.isfile(filename):
+  print "Error: %s is not a file" % filename
+  sys.exit(2)
+
+try:
+  f = ImageFont.truetype(filename, 1)
+except:
+  print "Error: %s is not a Truetype font" % filename
+  sys.exit()
+
+if output == "family":
+    print f.font.family
+if output == "style":
+    print f.font.style
