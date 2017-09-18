@@ -1,0 +1,1 @@
+sudo genisoimage -o ../hpe-ses-install.iso -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T ./; sudo isohybrid ../hpe-ses-install.iso
