@@ -44,8 +44,6 @@ for package_type in doc.findall("packages"):
                 #print "TYPE=%s PACKAGE=%s" % (package_type.attrib.get("type"),solvable.attrib.get("name"))
                 etree.strip_elements(package_type,package,with_tail=True)
 
-print "Output XML"
-
 print etree.tostring(doc,pretty_print=True)
 
 
