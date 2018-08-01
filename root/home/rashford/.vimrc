@@ -293,6 +293,8 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+" Sets the number of columns for a TAB.
+set softtabstop=4
 
 " get easier to use and more user friendly vim defaults
 " /etc/vimrc ends here
