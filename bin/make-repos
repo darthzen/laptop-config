@@ -1,0 +1,35 @@
+#!/bin/bash
+
+REPOXML="/data/suse/install/autoyast/repos.xml"
+RMTDIR="/data/suse/smt/SUSE/Updates/"
+ORIGDIR=`pwd`
+
+rm -f ${REPOXML}
+
+cd ${RMTDIR}
+
+for PROD in * ; do
+    if [ $PROD != "make-repos"  ] ; then 
+	    cd $PROD
+    	for VER in * ; do 
+	    	cd $VER 
+		    for ARCH in * ; do  
+			    echo "$PROD - $VER - $ARCH"
+                echo "      <listentry>
+        <media_url>http://rmt.ash4d.com/repo/SUSE/Products/${PROD}/${VER}/${ARCH}/product</media_url>
+        <product>${PROD}-${VER}-${ARCH}</product>
+        <product_dir/>
+      </listentry>
+      <listentry>
+        <media_url>http://rmt.ash4d.com/repo/SUSE/Updates/${PROD}/${VER}/${ARCH}/update</media_url>
+        <product>${PROD}-${VER}-${ARCH}-Updates</product>
+        <product_dir/>
+      </listentry>" >> ${REPOXML}
+	    	done 
+		    cd .. 
+    	done 
+    	cd .. 
+    fi
+done
+
+cd ${ORIGDIR}
