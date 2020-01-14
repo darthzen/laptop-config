@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  <add-on>
+      <listentry>
+        <media_url>http://rmt.ash4d.com/repo/SUSE/Products/SLE-Module-Server-Applications/15-SP1/x86_64/product</media_url>
+        <product>sle-module-server-applications</product>
+        <product_dir/>
+      </listentry>
+      <listentry>
+        <media_url>http://rmt.ash4d.com/repo/SUSE/Updates/SLE-Module-Server-Applications/15-SP1/x86_64/update</media_url>
+        <product>sle-module-server-applications-updates</product>
+        <product_dir/>
+      </listentry>
+      <listentry>
+        <media_url>http://rmt.ash4d.com/repo/SUSE/Products/SLE-Module-Basesystem/15-SP1/x86_64/product</media_url>
+        <product>sle-module-basesystem</product>
+        <product_dir/>
+      </listentry>
+      <listentry>
+        <media_url>http://rmt.ash4d.com/repo/SUSE/Updates/SLE-Module-Basesystem/15-SP1/x86_64/update</media_url>
+        <product>sle-module-basesystem-updates</product>
+        <product_dir/>
+      </listentry>
+    </add_on_products>
+  </add-on>
+  <bootloader>
+    <global>
+      <append>splash=silent mitigations=off quiet</append>
+      <cpu_mitigations>off</cpu_mitigations>
+      <gfxmode>auto</gfxmode>
+    </global>
+    <loader_type>grub2</loader_type>
+  </bootloader>
+  <general>
+    <ask-list config:type="list"/>
+    <mode>
+      <confirm config:type="boolean">false</confirm>
+    </mode>
+    <proposals config:type="list"/>
+    <signature-handling>
+      <accept_file_without_checksum config:type="boolean">true</accept_file_without_checksum>
+      <accept_non_trusted_gpg_key config:type="boolean">true</accept_non_trusted_gpg_key>
+      <accept_unknown_gpg_key config:type="boolean">true</accept_unknown_gpg_key>
+      <accept_unsigned_file config:type="boolean">true</accept_unsigned_file>
+      <accept_verification_failed config:type="boolean">false</accept_verification_failed>
+      <import_gpg_key config:type="boolean">true</import_gpg_key>
+    </signature-handling>
+    <storage>
+      <start_multipath config:type="boolean">false</start_multipath>
+    </storage>
+  </general>
+  <keyboard>
+    <keymap>english-us</keymap>
+  </keyboard>
+  <language>
+    <language>en_US</language>
+    <languages/>
+  </language>
+  <login_settings/>
+  <software>
+    <image/>
+    <install_recommended config:type="boolean">true</install_recommended>
+    <instsource/>
+    <packages config:type="list">
+      <package>sles-release</package>
+      <package>sle-module-server-applications-release</package>
+      <package>sle-module-basesystem-release</package>
+      <package>patterns-base-basesystem</package>
+      <package>patterns-base-base</package>
+      <package>patterns-base-minimal_base</package>
+      <package>screen</package>
+    </packages>
+    <products config:type="list">
+      <product>SLES</product>
+    </products>
+  </software>
+  <timezone>
+    <hwclock>UTC</hwclock>
+    <timezone>America/Chicago</timezone>
+  </timezone>  
+  <users config:type="list">
+    <user>
+      <username>root</username>
+      <user_password>linux</user_password>
+      <encrypted config:type="boolean">false</encrypted>
+    </user>
+  </users>
+</profile>
