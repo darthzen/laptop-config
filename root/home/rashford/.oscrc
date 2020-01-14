@@ -112,8 +112,6 @@ build-type = kvm
 #review_inherit_group = 1
 
 [https://api.opensuse.org]
-user = darthzen
-pass = hzdxv2bm
 # set aliases for this apiurl
 # aliases = foo, bar
 # email used in .changes, unless the one from osc meta prj <user> will be used
