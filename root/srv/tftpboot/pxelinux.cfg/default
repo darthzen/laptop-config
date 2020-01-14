@@ -14,10 +14,10 @@ LABEL sle-15-sp1-x86_64
   KERNEL SUSE/15-SP1/x86_64/linux
   APPEND initrd=SUSE/15-SP1/x86_64/initrd install=http://install.ash4d.com/SLE-15-SP1-Unified-x86_64/ self_update=http://rmt.ash4d.com/repo/SUSE/Updates/SLE-INSTALLER/15-SP1/x86_64/update/
 
-LABEL caas-admin
-  MENU LABEL CaaS Platform Admin Install
+LABEL caas-mgmt
+  MENU LABEL CaaS Platform 4 Management Node
   KERNEL SUSE/15-SP1/x86_64/linux
-  APPEND initrd=SUSE/15-SP1/x86_64/initrd install=http://install.ash4d.com/SLE-15-SP1-Installer-x86_64/ self_update=http://rmt.ash4d.com/repo/SUSE/Updates/SLE-INSTALLER/15-SP1/x86_64/update/ autoyast=http://install.ash4d.com/autoinst-caas-4.xml
+  APPEND initrd=SUSE/15-SP1/x86_64/initrd install=http://install.ash4d.com/SLE-15-SP1-Installer-x86_64/ self_update=http://rmt.ash4d.com/repo/SUSE/Updates/SLE-INSTALLER/15-SP1/x86_64/update/ autoyast=http://install.ash4d.com/autoyast/caas-4.xml
 
 #LABEL caas-node
 #  MENU LABEL CaaS Platform Node Install
