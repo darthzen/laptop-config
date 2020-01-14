@@ -11,6 +11,7 @@ cd ${RMTDIR}
 for PROD in * ; do
     if [ $PROD != "make-repos"  ] ; then 
 	    cd $PROD
+      echo "<!-- ${PROD} -->" >> ${REPOXML}
     	for VER in * ; do 
 	    	cd $VER 
 		    for ARCH in * ; do  
@@ -25,10 +26,13 @@ for PROD in * ; do
         <product>${PROD}-${VER}-${ARCH}-Updates</product>
         <product_dir/>
       </listentry>" >> ${REPOXML}
+        echo "" >> ${REPOXML}
 	    	done 
 		    cd .. 
     	done 
     	cd .. 
+      echo "" >> ${REPOXML}
+      echo "" >> ${REPOXML}
     fi
 done
 
