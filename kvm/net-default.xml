@@ -21,6 +21,9 @@
     <dhcp>
       <range start='192.168.122.2' end='192.168.122.254'/>
       <host mac='52:54:00:be:8a:bc' name='caas-mgmt' ip='192.168.122.10'/>
+      <host mac='52:54:00:be:8a:bd' name='caas-node1' ip='192.168.122.11'/>
+      <host mac='52:54:00:be:8a:be' name='caas-node2' ip='192.168.122.12'/>
+      <host mac='52:54:00:be:8a:bf' name='caas-node3' ip='192.168.122.13'/>
       <bootp file='pxelinux.0'/>
     </dhcp>
   </ip>
