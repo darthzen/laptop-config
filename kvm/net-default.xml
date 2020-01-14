@@ -1,0 +1,28 @@
+<network connections='1'>
+  <name>default</name>
+  <uuid>6390804c-fc40-494a-b72d-478ab92a8565</uuid>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr0' stp='on' delay='0'/>
+  <mac address='52:54:00:b8:61:88'/>
+  <domain name='ash4d.com'/>
+  <dns>
+    <forwarder addr='8.8.8.8'/>
+    <host ip='192.168.122.1'>
+      <hostname>install.ash4d.com</hostname>
+      <hostname>repos.ash4d.com</hostname>
+      <hostname>rmt.ash4d.com</hostname>
+    </host>
+  </dns>
+  <ip address='192.168.122.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.122.2' end='192.168.122.254'/>
+      <host mac='52:54:00:be:8a:bc' name='caas-mgmt' ip='192.168.122.10'/>
+      <bootp file='pxelinux.0'/>
+    </dhcp>
+  </ip>
+</network>
+
