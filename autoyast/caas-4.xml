@@ -2,7 +2,7 @@
 <!DOCTYPE profile>
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
   <add-on>
-    <add_on_products>
+    <add_on_products config:type="list">
       <listentry>
         <media_url>http://rmt.ash4d.com/repo/SUSE/Products/SLE-Module-Public-Cloud/15-SP1/x86_64/product</media_url>
         <product>sle-module-public-cloud</product>
@@ -86,6 +86,75 @@
     <languages/>
   </language>
   <login_settings/>
+  <networking>
+    <keep_install_network config:type="boolean">true</keep_install_network>
+  </networking>
+  <scripts>
+    <init-scripts config:type="list">
+      <script>
+        <source>
+          <![CDATA[
+          #!/bin/bash
+          mkdir -p /home/sles/.ssh
+          mkdir -p /root/.ssh
+          echo "-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----" > /home/sles/.ssh/id_rsa
+          cp -fv /home/sles/.ssh/id_rsa /root/.ssh/
+          chmod 700 /home/sles/.ssh.
+          chmod 600 /home/sles/.ssh/*
+          chmod 700 /root/.ssh
+          chmod 600 /root/.ssh/*
+          chown -R sles /home/sles/.ssh
+          chown root /root/.ssh
+          ]]>
+        </source>
+      </script>
+    </init-scripts>
+  </scripts>
+  <services-manager>
+    <default_target>multi-user</default_target>
+    <services>
+      <enable config:type="list">
+        <service>sshd</service>
+      </enable>
+    </services>
+  </services-manager>
   <software>
     <image/>
     <install_recommended config:type="boolean">true</install_recommended>
@@ -130,9 +199,29 @@
   </timezone>  
   <users config:type="list">
     <user>
+      <authorized_keys config:type="list">
+        <listentry>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAAkssc2hwYpIvHNn1Imvpyu2shMtfbLohkBcd8AU0gW6zxlGNyEmKE1gsy1hUlI1TYD0e5pvgD25AgJAJAvYPhPNop93xgfd6pAZl9H1uhRaCGsCYasntC8PAeCHkX+YiJz7tDuH0mPS01sC1Xp7ALOut69LVUHWy8/ymY5dWrLnTmPcBYETuLmlUPoXQBkkbtetfN8X8P1QVvlccF7VWRSsaQ5c+f2eJzptjIHnXzbc0QkaKCRpw39iAG6Rkc1+r+WP5n6ozHau+a51ACwRGLwgbvWcAO2WOVSeR71CaUH/n6Kss7CxWnCBpfR2YBAckbudieK5X9nYBH1X2SfAEnSlIrOsXu1R8m8ditvwFiD6VFmxbNmy8EUAE7cpQlB8VD3ZbJchwGWnXvznkHFGTB9Sconvtgr2aK+dwz6A1d1Pz6Y59maY2JBcGWMxqvbWAbZORQ0vsga3qKtTLlLrVFOlVfi81pXtdHxXfYDdMUqb9d0/pbm2I+8C6gpj926U= rashford@pikachu.ash4d.com</listentry>
+        <listentry>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDlCTmApdznpBlvNIPOkv94fqpmJLQ7mrn3CDFJeNxEGY2P2P0PFUlm3PEeI2+krfFDa5IOgSdQT8LVj12slx43t4gAw3Oh4i9BxJE2xQahG3dcR5B480Qlk4QjgzQ5HU5skCd0yrM3gcgMl8U4CgvxuDLu/mgGv+gfje/pLq0DODHwMhm/0N45anOeKB1ifg+nAegoO8YSm7R+t4NAlOA74QPY9iynzIKod2/WVCjgpnWD9x+JxPDyYv+QY80okKAUk9MKutB7FkJ2k+lS70bbnWPNyKSnI5AYSJv4dvGPvnlHWU3JAxa1dILo4gbSiEzN7/5lYtVHOw31YHgovE79 rashford@pikachu.ash4d.com</listentry>
+      </authorized_keys>
       <username>root</username>
       <user_password>linux</user_password>
       <encrypted config:type="boolean">false</encrypted>
+    </user>
+    <user>
+      <authorized_keys config:type="list">
+        <listentry>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAAkssc2hwYpIvHNn1Imvpyu2shMtfbLohkBcd8AU0gW6zxlGNyEmKE1gsy1hUlI1TYD0e5pvgD25AgJAJAvYPhPNop93xgfd6pAZl9H1uhRaCGsCYasntC8PAeCHkX+YiJz7tDuH0mPS01sC1Xp7ALOut69LVUHWy8/ymY5dWrLnTmPcBYETuLmlUPoXQBkkbtetfN8X8P1QVvlccF7VWRSsaQ5c+f2eJzptjIHnXzbc0QkaKCRpw39iAG6Rkc1+r+WP5n6ozHau+a51ACwRGLwgbvWcAO2WOVSeR71CaUH/n6Kss7CxWnCBpfR2YBAckbudieK5X9nYBH1X2SfAEnSlIrOsXu1R8m8ditvwFiD6VFmxbNmy8EUAE7cpQlB8VD3ZbJchwGWnXvznkHFGTB9Sconvtgr2aK+dwz6A1d1Pz6Y59maY2JBcGWMxqvbWAbZORQ0vsga3qKtTLlLrVFOlVfi81pXtdHxXfYDdMUqb9d0/pbm2I+8C6gpj926U= rashford@pikachu.ash4d.com</listentry>
+        <listentry>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDlCTmApdznpBlvNIPOkv94fqpmJLQ7mrn3CDFJeNxEGY2P2P0PFUlm3PEeI2+krfFDa5IOgSdQT8LVj12slx43t4gAw3Oh4i9BxJE2xQahG3dcR5B480Qlk4QjgzQ5HU5skCd0yrM3gcgMl8U4CgvxuDLu/mgGv+gfje/pLq0DODHwMhm/0N45anOeKB1ifg+nAegoO8YSm7R+t4NAlOA74QPY9iynzIKod2/WVCjgpnWD9x+JxPDyYv+QY80okKAUk9MKutB7FkJ2k+lS70bbnWPNyKSnI5AYSJv4dvGPvnlHWU3JAxa1dILo4gbSiEzN7/5lYtVHOw31YHgovE79 rashford@pikachu.ash4d.com</listentry>
+      </authorized_keys>
+      <encrypted config:type="boolean">true</encrypted>
+      <fullname>sles</fullname>
+      <gid>100</gid>
+      <home>/home/sles</home>
+      <home_btrfs_subvolume config:type="boolean">false</home_btrfs_subvolume>
+      <shell>/bin/bash</shell>
+      <uid>1000</uid>
+      <user_password>linux</user_password>
+      <encrypted config:type="boolean">false</encrypted>
+      <username>sles</username>
     </user>
   </users>
 </profile>
