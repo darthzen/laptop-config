@@ -2,6 +2,7 @@
 <!DOCTYPE profile>
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
   <add-on>
+    <add_on_products>
       <listentry>
         <media_url>http://rmt.ash4d.com/repo/SUSE/Products/SLE-Module-Public-Cloud/15-SP1/x86_64/product</media_url>
         <product>sle-module-public-cloud</product>
