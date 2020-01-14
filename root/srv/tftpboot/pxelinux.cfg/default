@@ -1,0 +1,25 @@
+default menu.c32
+prompt 0
+
+MENU TITLE Ash4d Laptop PXE Install
+TIMEOUT 50
+
+LABEL localboot
+  MENU DEFAULT
+  MENU LABEL Boot from local disk
+  LOCALBOOT 0
+
+LABEL sle-15-sp1-x86_64
+  MENU LABEL SLE 15 SP1 x86_64
+  KERNEL SUSE/15-SP1/x86_64/linux
+  APPEND initrd=SUSE/15-SP1/x86_64/initrd install=http://install.ash4d.com/SLE-15-SP1-Unified-x86_64/ self_update=http://rmt.ash4d.com/repo/SUSE/Updates/SLE-INSTALLER/15-SP1/x86_64/update/
+
+LABEL caas-admin
+  MENU LABEL CaaS Platform Admin Install
+  KERNEL SUSE/15-SP1/x86_64/linux
+  APPEND initrd=SUSE/15-SP1/x86_64/initrd install=http://install.ash4d.com/SLE-15-SP1-Installer-x86_64/ self_update=http://rmt.ash4d.com/repo/SUSE/Updates/SLE-INSTALLER/15-SP1/x86_64/update/ autoyast=http://install.ash4d.com/autoinst-caas-4.xml
+
+#LABEL caas-node
+#  MENU LABEL CaaS Platform Node Install
+#  KERNEL CaaS/3/x86_64/linux
+#  APPEND initrd=CaaS/3/x86_64/initrd install=http://install.ash4d.com/CaaSP-3-x86_64 autoyast=http://velum.ash4d.com/autoyast
