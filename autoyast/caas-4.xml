@@ -76,9 +76,6 @@
       <accept_verification_failed config:type="boolean">false</accept_verification_failed>
       <import_gpg_key config:type="boolean">true</import_gpg_key>
     </signature-handling>
-    <storage>
-      <start_multipath config:type="boolean">false</start_multipath>
-    </storage>
   </general>
   <keyboard>
     <keymap>english-us</keymap>
@@ -130,4 +127,11 @@
     <hwclock>UTC</hwclock>
     <timezone>America/Chicago</timezone>
   </timezone>  
+  <users config:type="list">
+    <user>
+      <username>root</username>
+      <user_password>linux</user_password>
+      <encrypted config:type="boolean">false</encrypted>
+    </user>
+  </users>
 </profile>
