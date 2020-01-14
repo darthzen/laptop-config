@@ -46,9 +46,6 @@
       <accept_verification_failed config:type="boolean">false</accept_verification_failed>
       <import_gpg_key config:type="boolean">true</import_gpg_key>
     </signature-handling>
-    <storage>
-      <start_multipath config:type="boolean">false</start_multipath>
-    </storage>
   </general>
   <keyboard>
     <keymap>english-us</keymap>
@@ -59,7 +56,6 @@
   </language>
   <login_settings/>
   <software>
-    <image/>
     <install_recommended config:type="boolean">true</install_recommended>
     <instsource/>
     <packages config:type="list">
