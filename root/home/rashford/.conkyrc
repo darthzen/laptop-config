@@ -45,46 +45,46 @@ conky.config = {
 conky.text = [[
 ${color 02A49C}${font SFNS Regular:pixelsize=14}SYSTEM DETAILS ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
-UPTIME: ${alignr 10}${uptime}
-
-PROCESSOR: ${alignr 10}${execi 100 lscpu | grep -i "model name" | cut -c 20-}
-
+#UPTIME: ${alignr 10}${uptime}
+#
+#PROCESSOR: ${alignr 10}${execi 100 lscpu | grep -i "model name" | cut -c 20-}
+#
 LOAD AVG: ${alignr 10}${loadavg}
 
 MB TEMP: ${alignr 10}${execi 15 sensors -f | tail -n 15 | grep -i "temp1" | cut -c 15-22}
-
+#
 ${if_up enp10s0u1}
 ${color 02A49C}${font SFNS Regular:pixelsize=14}WIRED NETWORK ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
-Public IP: ${goto 90}${curl http://api.ipify.org 300}
+Public IP: ${goto 90}${curl -s https://api.ipify.org 300}
 
 SPEED UP: ${goto 90}${upspeed enp10s0u1}
 ${upspeedgraph enp10s0u1 15,240 02A49C 02A49C}
 
 SPEED DOWN: ${goto 90}${downspeed enp10s0u1}
 ${downspeedgraph enp10s0u1 15,240 02A49C 02A49C}
-
-TOTAL UP: ${goto 90}${totalup enp10s0u1}
-
-TOTAL DOWN: ${goto 90}${totaldown enp10s0u1}
-
+#
+#TOTAL UP: ${goto 90}${totalup enp10s0u1}
+#
+#TOTAL DOWN: ${goto 90}${totaldown enp10s0u1}
+#
 ${color 02A49C}${font SFNS Regular:pixelsize=14}CENTRAL PROCESSING UNIT ${color 1c1c1c}${stippled_hr 2}${color c1c1c1} 
 ${else}\
-${if_up wlp2s0}
+${if_up wlp59s0}
 ${color 02A49C}${font SFNS Regular:pixelsize=14}WIRELESS NETWORK ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
-Public IP: ${alignr 10}${curl http://api.ipify.org 300}
+#Public IP: ${alignr 10}${curl http://api.ipify.org 300}
+#
+SSID: ${alignr 10}${wireless_essid wlp59s0}
 
-SSID: ${alignr 10}${wireless_essid}
+SPEED UP: ${goto 90}${upspeed wlp59s0}
+${upspeedgraph wlp59s0 15,240 00C081 02D35F -t}
 
-SPEED UP: ${goto 90}${upspeed wlp2s0}
-${upspeedgraph wlp2s0 15,240 00C081 02D35F -t}
-
-SPEED DOWN: ${goto 90}${downspeed wlp2s0}
-${downspeedgraph wlp2s0 15,240 00C081 02D35F -t}
-
-TOTAL UP: ${goto 90}${totalup wlp2s0}${goto 130}TOTAL DOWN: ${goto 220}${totaldown wlp2s0}
-
+SPEED DOWN: ${goto 90}${downspeed wlp59s0}
+${downspeedgraph wlp59s0 15,240 00C081 02D35F -t}
+#
+#TOTAL UP: ${goto 90}${totalup wlp59s0}${goto 130}TOTAL DOWN: ${goto 220}${totaldown wlp59s0}
+#
 ${else}\
 NETWORK DISCONNECTED
 ${endif}
@@ -92,46 +92,54 @@ ${color 02A49C}${font SFNS Regular:pixelsize=14}CENTRAL PROCESSING UNIT ${color 
 
 CPU TEMP: ${alignr 10}${execp sensors -f coretemp-isa-0000 | grep 'Core 0' | cut -c16-19} °F
 
-CPU FAN: ${alignr 10}${execi 15 sensors -f | grep "Processor Fan" | cut -c 16-23}
-
+#CPU FAN: ${alignr 10}${execi 15 sensors -f | grep "Processor Fan" | cut -c 16-23}
+#
 ${font PF Tempesta Five Condensed:pixelsize=10}TOTAL: ${cpu cpu0}%
 ${goto 38} ${color 02A49C}${cpubar 5,200 cpu0}${color c1c1c1}
 ${goto 38}${cpugraph cpu0 15,200 00C081 02D35F -t}${color c1c1c1}
 
-CORE 1: ${freq cpu1}MHz 
+CORE 1:${goto 47} ${freq cpu1}MHz 
 ${font SFNS Regular:pixelsize=14}${cpu cpu1}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu1}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 ${goto 38}${cpugraph cpu1 15,200 00C081 02D35F -t}${color c1c1c1}
-
-CORE 2: ${freq cpu2}MHz
+#
+CORE 2:${goto 47} ${freq cpu2}MHz
 ${font SFNS Regular:pixelsize=14}${cpu cpu2}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu2}${color c1c1c1}${font SFNS Regular:pixelsize=10}
 ${goto 38}${cpugraph cpu2 15,200 00C081 02D35F -t}
-
-CORE 3: ${freq cpu3}MHz
+#
+CORE 3:${goto 47} ${freq cpu3}MHz
 ${font SFNS Regular:pixelsize=14}${cpu cpu3}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu3}${color c1c1c1}${font SFNS Regular:pixelsize=10}
 ${goto 38}${cpugraph cpu3 15,200 00C081 02D35F -t}
-
-CORE 4: ${freq cpu4}MHz
+#
+CORE 4:${goto 47} ${freq cpu4}MHz
 ${font SFNS Regular:pixelsize=14}${cpu cpu4}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu4}${color c1c1c1}${font SFNS Regular:pixelsize=10}
 ${goto 38} ${cpugraph cpu4 15,200 00C081 02D35F -t}
-
+#
+CORE 5:${goto 47} ${freq cpu5}MHz
+${font SFNS Regular:pixelsize=14}${cpu cpu5}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu5}${color c1c1c1}${font SFNS Regular:pixelsize=10}
+${goto 38} ${cpugraph cpu5 15,200 00C081 02D35F -t}
+#
+CORE 6:${goto 47} ${freq cpu6}MHz
+${font SFNS Regular:pixelsize=14}${cpu cpu6}%${goto 35} ${color 02A49C}${cpubar 5,200 cpu6}${color c1c1c1}${font SFNS Regular:pixelsize=10}
+${goto 38} ${cpugraph cpu6 15,200 00C081 02D35F -t}
+#
 ${color 02A49C}${font SFNS Regular:pixelsize=14}MEMORY & USAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
 
 RANDOM ACCESS MEMORY: ${mem}/${memmax}
 ${font SFNS Regular:pixelsize=14}${memperc}%${font SFNS Regular:pixelsize=10}${goto 38} ${color 02A49C}${membar 5,200}${color c1c1c1}
 ${goto 38}${memgraph 5,200 00C081 02D35F -t}
-
-${color 02A49C}${font SFNS Regular:pixelsize=14}STORAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
-
-DISK I/O:
-/dev/sda: ${diskio_read sda}/${diskio_write sda}
-${goto 10}read:${goto 38}${diskiograph_read sda 15,200 00C081 02D35F -t}
-${goto 10}write:${goto 38}${diskiograph_write sda 15,200 00C081 02D35F -t}
-
-/dev/sdb: ${diskio_read sdb}/${diskio_write sdb}
-${goto 10}read:${goto 38}${diskiograph_read sdb 15,200 00C081 02D35F -t}
-${goto 10}write:${goto 38}${diskiograph_write sdb 15,200 00C081 02D35F -t}
-
-/ROOT:  ${fs_used /}/${fs_size /}
-${font SFNS Regular:pixelsize=14}${fs_used_perc /}%${color 02A49C}${goto 38}${fs_bar 5,200 /}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
-
+#
+#${color 02A49C}${font SFNS Regular:pixelsize=14}STORAGE ${color 1c1c1c}${stippled_hr 2}${color c1c1c1}${font PF Tempesta Five Condensed:pixelsize=10}
+#
+#DISK I/O:
+#/dev/sda: ${diskio_read sda}/${diskio_write sda}
+#${goto 10}read:${goto 38}${diskiograph_read sda 15,200 00C081 02D35F -t}
+#${goto 10}write:${goto 38}${diskiograph_write sda 15,200 00C081 02D35F -t}
+#
+#/dev/sdb: ${diskio_read sdb}/${diskio_write sdb}
+#${goto 10}read:${goto 38}${diskiograph_read sdb 15,200 00C081 02D35F -t}
+#${goto 10}write:${goto 38}${diskiograph_write sdb 15,200 00C081 02D35F -t}
+#
+#/ROOT:  ${fs_used /}/${fs_size /}
+#${font SFNS Regular:pixelsize=14}${fs_used_perc /}%${color 02A49C}${goto 38}${fs_bar 5,200 /}${font PF Tempesta Five Condensed:pixelsize=10}${color c1c1c1}
+#
 ]];
